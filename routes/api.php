@@ -13,10 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('Api')->group(function () {
-    Route::get('/login','AdminController@login');
+// 路由分组 此路由组将会传送 'Api' 命名空间
+Route::group(["namespace"=>'Api'],function (){
+    // 路由分组 增加路由前缀 admin
+    Route::group(["prefix"=>"admin"],function(){
+        Route::post('/login','AdminController@login');
+    });
 });
