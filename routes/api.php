@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// 设置允许跨域
+header('Access-Control-Allow-Origin:*');
+header('Access-Control-Allow-Methods:GET,POST,PUT,DELETE');
+header('Access-Control-Allow-Headers:Origin, Content-Type, Cookie, Accept');
+header('Access-Control-Allow-Credentials:true');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
